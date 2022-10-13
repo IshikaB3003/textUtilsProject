@@ -16,13 +16,20 @@ const TextForm = (props) => {
         setText(newText);
         
     }
+    const handleClearclick=()=>{
+        // console.log("lower case was clicked"+text);
+        let newText='';
+        // setText("yout have clicked on uppercase button");
+        setText(newText);
+        
+    }
     const handleOnChange=(event)=>{
         console.log("onChange was clicked");
         setText(event.target.value); 
     }
     const [text, setText] = useState('');
     //text="newtext" - wrong way to change text
-    //  setText("yayyynayyy");
+    //  setText("yayyynayyy"); - correct way
   return (
     <>
     <div>
@@ -33,6 +40,7 @@ const TextForm = (props) => {
         </div>
         <button className="btn btn-primary mx-2 my-3" type="button" onClick={handleUpclick}>Convert to Uppercase</button>
         <button className="btn btn-primary mx-2 my-3" type="button" onClick={handleLowclick}>Convert to Lowercase</button>
+        <button className="btn btn-primary mx-2 my-3" type="button" onClick={handleClearclick}>Clear Text Entirely</button>
 
         </form>
     </div>
