@@ -34,9 +34,9 @@ const TextForm = (props) => {
     <>
     <div>
       <form>
-        <h1>{props.heading}</h1>
+        <h1 style={{color:props.mode==='light'?'black':'white'}}>{props.heading}</h1>
         <div className="form-group">
-            <textarea className="form-control" id="myBox" value={text} onChange={handleOnChange} rows="8"/>
+            <textarea className="form-control" id="myBox" style={{backgroundColor:props.mode==='dark'?'#001c5f':'white' , color:props.mode==='light'?'black':'white'}} value={text} onChange={handleOnChange} rows="8"/>
         </div>
         <button className="btn btn-primary mx-2 my-3" type="button" onClick={handleUpclick}>Convert to Uppercase</button>
         <button className="btn btn-primary mx-2 my-3" type="button" onClick={handleLowclick}>Convert to Lowercase</button>
@@ -44,12 +44,12 @@ const TextForm = (props) => {
 
         </form>
     </div>
-    <div className="container my-2">
+    <div className="container my-2" style={{color:props.mode==='light'?'black':'white'}}>
         <h2>Your text summary</h2>
         <p>{text.split(" ").length} words and {text.length} characters</p>
         <p>{0.008 * text.split(" ").length}Minutes Read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Type something to preview it here"}</p>
     </div>
     </>
   )
