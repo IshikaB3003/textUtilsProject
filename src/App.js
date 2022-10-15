@@ -5,19 +5,34 @@ import React, {useState} from "react";
 // import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
+import Alert  from "./components/Alert";
 
 // let name="Ishika";
 function App() {
   const[mode,setMode] = useState('light');//whether dark mode is enabled or not
+  const[alert,setAlert]=useState(null);
+
+  const showAlert=(message,type)=>{
+    setAlert({
+      msg:message,
+      type:type,
+    })
+    setTimeout(()=>{
+      setAlert(null);
+    },2000);
+  }
+
 
   const toggleMode=()=>{
     if(mode==='light'){
       setMode('dark');
       document.body.style.backgroundColor='#001c5f'
+      showAlert("Dark mode enabled","success");
     }
     else{
       setMode('light');
       document.body.style.backgroundColor='white'
+      showAlert("Light mode enabled","success");
     }
   }
 
@@ -59,8 +74,9 @@ function App() {
       <>
       {/* <Navbar title="Textutils" aboutText="About textutils"/> */}
       <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
+      <Alert alert={alert}/>
       <div className="container my-3">
-        <TextForm heading="Enter the text to be anaylsed" mode={mode}/>
+        <TextForm showAlert={showAlert} heading="Enter the text to be anaylsed" mode={mode}/>
         {/* <About/> */}
       </div>
       </>

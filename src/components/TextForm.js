@@ -7,32 +7,35 @@ const TextForm = (props) => {
         let newText=text.toUpperCase();
         // setText("yout have clicked on uppercase button");
         setText(newText);
-        
+        props.showAlert("Converted to Uppercase","success");
     }
     const handleLowclick=()=>{
         // console.log("lower case was clicked"+text);
         let newText=text.toLowerCase();
         // setText("yout have clicked on uppercase button");
         setText(newText);
-        
+        props.showAlert("Converted to Lowercse","success");
+
     }
     const handleClearclick=()=>{
         // console.log("lower case was clicked"+text);
         let newText='';
         // setText("yout have clicked on uppercase button");
         setText(newText);
-        
+        props.showAlert("Text Cleared","success");
     }
 
     const handleCopy=()=>{
         let text=document.getElementById('myBox');
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Copied to clipboard","success");
     }
 
     const handleSpaces=()=>{
         let newText=text.split(/[ ]+/);
-        setText(newText.join(" "))
+        setText(newText.join(" "));
+        props.showAlert("Spaces removed","success");
     }
 
     const handleOnChange=(event)=>{
